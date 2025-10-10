@@ -83,9 +83,23 @@ def graph_builder():
     workflow.add_edge("summarize_conversation", END)
 
     return workflow
-# Compile
+'''# Compile
 workflow = graph_builder()
-#graph = workflow.compile(checkpointer=memory)
+# Define the connection to the existing Sqlite database
+db_path = "example.db"
+conn = sqlite3.connect(db_path, check_same_thread=False)
+
+memory = SqliteSaver(conn)
+graph = workflow.compile(checkpointer=memory)
+
+# Specify a thread
+config = {"configurable": {"thread_id": 1}}
+
+# Specify an input
+messages = [HumanMessage(content="Hello!"),]
+
+# Run
+messages = graph.invoke({"messages": messages},config)'''
 
 # Get the PNG image data as bytes
 #png_bytes = graph.get_graph().draw_mermaid_png()
