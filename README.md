@@ -8,8 +8,40 @@ Refer chat-agent folder for implementation of chainlit - the UI for short term m
 Finally fastapi is used for deploying chainlit app
 
 Steps for running the file
-'''bash
+
+Step-1:
+```bash
 
 git pull https://github.com/reenigne314/fastapi-chainlit.git
 
-'''
+```
+
+Step-2: Create a venv and activate
+```bash
+
+uv venv && source .venv/bin/activate
+
+```
+
+Step-3: download the requirements
+```bash
+
+uv pip install -r requirements.txt
+
+```
+
+Step-4: 
+
+Option-1: Run the chainlit app directly
+```bash
+
+cd chainlit && chainlit run chainlit-chat.py -w
+
+```
+
+Option-2: Run using fastapi
+```bash
+
+uvicorn fastapi/main:app --reload
+
+```
