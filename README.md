@@ -46,6 +46,8 @@ Add api-key from openrouter after creating .env file (paste it in .env file):
 cp .envexample .env
 
 ```
+
+Step-5:
 Option-1: Run the chainlit app directly
 
 ```bash
