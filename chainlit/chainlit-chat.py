@@ -23,7 +23,7 @@ async def main():
 @cl.on_message
 async def on_message(message: cl.Message):
     """Handle text messages and images"""
-    msg = cl.Message(content="")
+    msg = cl.Message(content="")    
 
     # Process any attached images
     content = message.content
