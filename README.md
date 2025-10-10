@@ -8,7 +8,9 @@ Refer chat-agent folder for implementation of chainlit - the UI for short term m
 
 Finally fastapi is used for deploying chainlit app
 
-<img src="./pictures/screenshot.png" width="400" alt="My App Screenshot">
+<p align="center">
+  <img src="./pictures/Screenshot.png" width="1000" alt="My App Screenshot">
+</p>
 
 Steps for running the file
 
