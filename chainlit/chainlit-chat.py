@@ -7,13 +7,14 @@ from langgraph.graph import END, START, StateGraph
 from langchain.schema.runnable.config import RunnableConfig
 from langgraph.graph import MessagesState
 from langchain_core.messages import SystemMessage, HumanMessage, RemoveMessage
-from graph import graph
 from langgraph.checkpoint.sqlite import SqliteSaver
 
 # --- START: Path Correction ---
 project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
 sys.path.insert(0, project_root)
 # --- END: Path Correction ---
+
+from graph import graph
 
 @cl.on_chat_start
 async def main():
