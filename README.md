@@ -40,6 +40,12 @@ uv pip install -r requirements.txt
 
 Step-4:
 
+Add api-key from openrouter after creating .env file (paste it in .env file):
+```bash
+
+cp .envexample .env
+
+```
 Option-1: Run the chainlit app directly
 
 ```bash
