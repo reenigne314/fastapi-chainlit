@@ -1,6 +1,6 @@
 import sqlite3
 from langgraph.checkpoint.sqlite import SqliteSaver
-from graph.edges import graph_builder
+from graph.shortmem import graph_builder
 
 # Define the connection to the existing Sqlite database
 db_path = "example.db"
