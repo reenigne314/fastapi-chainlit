@@ -41,18 +41,21 @@ uv pip install -r requirements.txt
 Step-4:
 
 Add api-key from openrouter after creating .env file (paste it in .env file):
+
 ```bash
 
 cp .envexample .env
 
 ```
 
+Paste your api keys
+
 Step-5:
 Option-1: Run the chainlit app directly
 
 ```bash
 
-cd chainlit && chainlit run chainlit-chat.py -w
+chainlit run chainlit-chatapp/chainlit-chat.py -w
 
 ```
 
@@ -60,6 +63,6 @@ Option-2: Run using fastapi
 
 ```bash
 
-uvicorn fastapi/main:app --reload
+python -m uvicorn fastapi-app.main:app --reload
 
 ```
