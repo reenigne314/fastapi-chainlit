@@ -38,7 +38,7 @@ docs = loader.load()
 text_splitter = RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap=200)
 all_splits = text_splitter.split_documents(docs)
 
-print(all_splits[0])
+#print(all_splits[0])
 
 _ = vector_store.add_documents(documents = all_splits)
 
@@ -48,4 +48,5 @@ results = vector_store.similarity_search(
     "What is task decomposition in AI agents?", k=3
 )
 
-print(results)
+#print(results)
+

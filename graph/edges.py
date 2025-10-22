@@ -46,7 +46,7 @@ retriever_tool = create_retriever_tool(
     description="Useful for retrieving information from long term memory to answer questions about previously ingested documents.",
 )
 
-llm_with_tool = llm.bind_tools([retriever_tool])
+llm_with_tool = llm.bind_tools([retriever_tool], parallel_tool_calls=False)
 
 class State(MessagesState):
     summary: str
@@ -63,7 +63,7 @@ def call_model(state: State):
         messages = state["messages"]
 
     response = llm_with_tool.invoke(messages)
-    return {"messages": response}
+    return {"messages": [response]}
 
 
 def summarize_conversation(state: State):
@@ -85,8 +85,12 @@ def summarize_conversation(state: State):
     return {"summary": response.content, "messages": delete_messages}
 
 
-def should_continue(state: State) -> Literal ["summarize_conversation", END]:
+def should_continue(state: State) -> str | Literal[END]:
+    last_message = state["messages"][-1]
     messages = state["messages"]
+
+    if last_message.tool_calls:
+        return "tools"
 
     if len(messages) > 6:
         return "summarize_conversation"
@@ -123,9 +127,17 @@ def graph_builder():
 
     # Set the entrypoint as conversation
     workflow.add_edge(START, "conversation")
-    workflow.add_conditional_edges("conversation", tools_condition)
     workflow.add_edge("tools", "conversation")
-    workflow.add_conditional_edges("conversation", should_continue)
+
+    workflow.add_conditional_edges(
+        "conversation", 
+        should_continue,
+        {
+            "tools": "tools",
+            "summarize_conversation": "summarize_conversation",
+            END: END
+        }
+        )
     workflow.add_edge("summarize_conversation", END)
 
     return workflow

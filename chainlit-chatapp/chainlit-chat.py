@@ -9,6 +9,7 @@ from chainlit.types import ThreadDict
 
 from langgraph.graph import MessagesState
 from langchain_core.messages import SystemMessage, HumanMessage, RemoveMessage
+from langgraph.checkpoint.sqlite.aio import AsyncSqliteSaver
 
 # --- START: Path Correction ---
 project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
