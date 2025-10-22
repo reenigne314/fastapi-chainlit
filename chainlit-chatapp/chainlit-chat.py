@@ -56,5 +56,5 @@ async def on_message(message: cl.Message):
     messages = graph.invoke({"messages": [messages]},config)
 
     final_content = messages['messages'][-1].content
-
+    
     await cl.Message(content=final_content).send()
